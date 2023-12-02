@@ -1,0 +1,86 @@
+<!doctype html>
+
+<head>
+    <html lang="en" class="h-100" data-bs-theme="auto">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Admin</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Главная</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Сотрудники</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Смены</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Заказы</a>
+                        </li>
+                    </ul>
+                </div> -->
+                <form class="d-flex">
+                    <a href="/logout" class="btn btn-outline-light">Выйти</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+        <div class="container">
+            <h2 class="mt-5">Добавление сотрудника</h2>
+            <form action="/add_employee" method="post">
+                <div class="form-group">
+                  <label for="fullName">ФИО:</label>
+                  <input type="text" class="form-control" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                  <label for="contactDetails">Контактные данные:</label>
+                  <input type="text" class="form-control" id="contactDetails" name="contactDetails">
+                </div>
+                <div class="form-group">
+                  <label for="login">Логин:</label>
+                  <input type="text" class="form-control" id="login" name="login" required>
+                </div>
+                <div class="form-group">
+                  <label for="password">Пароль:</label>
+                  <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                  <label for="role">Роль:</label>
+                  <select class="form-control" id="role" name="role" required>
+                    <option value="Администратор">Администратор</option>
+                    <option value="Повар">Повар</option>
+                    <option value="Официант">Официант</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Добавить сотрудника</button>
+              </form>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <div class="container">
+            <span class="text-body-secondary"></span>
+        </div>
+    </footer>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

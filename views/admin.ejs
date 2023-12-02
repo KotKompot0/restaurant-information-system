@@ -1,0 +1,150 @@
+<!doctype html>
+
+<head>
+    <html lang="en" class="h-100" data-bs-theme="auto">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Admin</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/stylesheets/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Главная</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Сотрудники</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Смены</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Заказы</a>
+                        </li>
+                    </ul>
+                </div> -->
+                <form class="d-flex">
+                    <a href="/logout" class="btn btn-outline-light">Выйти</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main class="flex-shrink-0">
+        <div class="container">
+            <h2 class="mt-5">Сотрудники</h2>
+            <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Логин</th>
+                    <th scope="col">Роль</th>
+                    <th scope="col" colspan="2">Действие</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% employees.forEach((i) => { %>
+                        <tr>
+                            <td><%= i.FullName %></td>
+                            <td><%= i.Login %></td>
+                            <td><%= i.Role  %></td>
+                            <td><a class="btn btn-warning" href="/edit_employee/<%= i.EmployeeID %>" role="button">Редактировать</a></td>
+                            <td>
+                                <form action="/del_employee" method="post">
+                                    <input type="hidden" value="<%= i.EmployeeID %>" name="employeeID">
+                                    <button class="btn btn-danger" type="submit">Удалить</button>
+                                </form>
+                            </td>
+                        </tr>
+                     <% }); %> 
+                </tbody>
+              </table>
+              <a class="btn btn-success" href="/add_employee" role="button">Добавить сотрудника</a>
+        </div>
+        <div class="container">
+            <h2 class="mt-5">Сотрудники на смене</h2>
+            <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Роль</th>
+                    <th scope="col">Смена</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% ShiftEmployee.forEach((i) => { %>
+                        <tr>
+                            <td><%= i.FullName %></td>
+                            <td><%= i.Role %></td>
+                            <td><%= i.ShiftName %></td>
+                        </tr>
+                     <% }); %> 
+                </tbody>
+              </table>
+              <a class="btn btn-success" href="/add_to_shifts" role="button">Записать на смену</a>
+        </div>
+        <div class="container">
+            <h2 class="mt-5">Смены</h2>
+            <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Смена</th>
+                    <th scope="col">Начало</th>
+                    <th scope="col">Конец</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% shifts.forEach((i) => { %>
+                        <tr>
+                            <td><%= i.ShiftName %></td>
+                            <td><%= i.StartDate %></td>
+                            <td><%= i.EndDate %></td>
+                        </tr>
+                     <% }); %> 
+                </tbody>
+              </table>
+        </div>
+        <div class="container">
+            <h2 class="mt-5">Заказы</h2>
+            <table class="table">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Номер</th>
+                    <th scope="col">Статус</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% orders.forEach((i) => { %>
+                        <tr>
+                            <td><%= i.OrderID %></td>
+                            <td><%= i.OrderStatus %></td>
+                        </tr>
+                     <% }); %> 
+                </tbody>
+              </table>
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-body-tertiary">
+        <div class="container">
+            <span class="text-body-secondary"></span>
+        </div>
+    </footer>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
