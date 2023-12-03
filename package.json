@@ -6,9 +6,6 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www"
   },
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "bootstrap": "^5.3.2",
     "cookie-parser": "~1.4.4",
