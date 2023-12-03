@@ -7,7 +7,7 @@
     "dev": "nodemon ./bin/www"
   },
   "engines": {
-    "node": "20.x"
+    "node": "18.x"
   },
   "dependencies": {
     "bootstrap": "^5.3.2",
