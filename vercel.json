@@ -3,23 +3,12 @@
   "version": 2,
   "public": true,
   "builds": [
-    {
-      "src": "./bin/www",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "public/**",
-      "use": "@vercel/static"
-    }
+      { "use": "@vercel/node", "src": "app.js" }
   ],
   "routes": [
-    {
-      "src": "/((?!.*\\.\\w+$).*)",
-      "dest": "./bin/www"
-    },
-    {
-      "src": "/(.+\\.[a-z]+)$",
-      "dest": "/public/$1"
-    }
-  ]
+      { 
+        "src": "/(.*)", 
+        "dest": "app.js"
+      }
+    ]
 }
